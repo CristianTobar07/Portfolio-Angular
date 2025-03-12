@@ -1,0 +1,24 @@
+<div class="contenedor-header">
+  <header>
+    <div class="logo">
+      <a routerLink="/">Cristian A. Tobar</a>
+    </div>
+    <nav [ngClass]="{ responsive: menuVisible }" id="nav">
+      <ul>
+        <li><a routerLink="/" (click)="seleccionar()">INICIO</a></li>
+        <li><a routerLink="/sobremi" (click)="seleccionar()">SOBRE MI</a></li>
+        <li><a routerLink="/skills" (click)="seleccionar()">SKILLS</a></li>
+        <li>
+          <a routerLink="/curriculum" (click)="seleccionar()">CURRICULUM</a>
+        </li>
+        <li>
+          <a routerLink="/portfolio" (click)="seleccionar()">PROYECTOS</a>
+        </li>
+        <li><a routerLink="/contacto" (click)="seleccionar()">CONTACTO</a></li>
+      </ul>
+    </nav>
+    <div class="nav-responsive" (click)="mostrarOcultarMenu()">
+      <i class="fa-solid fa-bars"></i>
+    </div>
+  </header>
+</div>
