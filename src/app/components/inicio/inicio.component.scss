@@ -1,3 +1,20 @@
+$color-principal: #1e2326;
+$color-secundario: #808000;
+$color-texto: #fff;
+$fuente-principal: "Righteous", sans-serif;
+
+@mixin border-radius($radio) {
+  border-radius: $radio;
+}
+
+@mixin boton-redondo($size) {
+  width: $size;
+  height: $size;
+  line-height: $size;
+  border-radius: 50%;
+  text-align: center;
+}
+
 .inicio {
   background: linear-gradient(
       to top,
@@ -7,7 +24,56 @@
     url("../../../assets/img/background.webp");
   background-size: cover;
   height: 100vh;
-  color: #fff;
+  color: $color-texto;
   display: flex;
   align-items: center;
+
+  .contenido-banner {
+    padding: 20px;
+    background-color: $color-principal;
+    max-width: 350px;
+    margin: auto;
+    text-align: center;
+    @include border-radius(40px);
+    margin-top: 70px;
+
+    img {
+      margin-top: 80px;
+      border: 10px solid $color-secundario;
+      display: block;
+      width: 300px;
+      height: 300px;
+      margin: auto;
+      @include border-radius(100%);
+    }
+
+    h1 {
+      margin-top: 40px;
+      font-size: 42px;
+      font-family: $fuente-principal;
+    }
+
+    h2 {
+      font-size: 15px;
+      font-weight: normal;
+    }
+
+    .redes {
+      a {
+        color: $color-texto;
+        display: inline-block;
+        text-decoration: none;
+        border: 1px solid $color-texto;
+        @include boton-redondo(42px);
+        margin: 20px 5px;
+        font-size: 20px;
+        transition: 0.3s;
+
+        &:hover {
+          background-color: $color-secundario;
+          border-color: transparent;
+        }
+      }
+    }
+  }
 }
