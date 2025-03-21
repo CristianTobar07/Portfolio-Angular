@@ -1,5 +1,157 @@
+// 🔹 Variables Globales
+$color-fondo: #1e2326;
+$color-texto: #fff;
+$color-secundario: #808000;
+$color-interes: #252a2e;
+$fuente-titulos: "Righteous", sans-serif;
+
+// 🔹 Mixins para Reutilización
+@mixin flexbox($direction: row, $justify: flex-start, $align: stretch) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin button-style {
+  cursor: pointer;
+  background-color: transparent;
+  border: 2px solid $color-texto;
+  width: fit-content;
+  display: block;
+  margin: 20px auto;
+  padding: 10px 22px;
+  font-size: 16px;
+  color: $color-texto;
+  position: relative;
+  z-index: 10;
+}
+
+// 🔹 Estilos de la Sección "Sobre Mí"
 .sobremi {
-  background-color: #1e2326;
-  color: #fff;
+  background-color: $color-fondo;
+  color: $color-texto;
   padding: 50px 20px;
+  margin-top: 50px;
+
+  .contenido-seccion {
+    max-width: 1100px;
+    margin: auto;
+
+    h2 {
+      font-size: 48px;
+      font-family: $fuente-titulos;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    p {
+      font-size: 18px;
+      // line-height: 22px;
+      font-weight: 300;
+      margin-bottom: 20px;
+
+      span {
+        color: $color-secundario;
+        font-weight: bold;
+      }
+    }
+  }
+
+  .fila {
+    @include flexbox(row, space-between, flex-start);
+
+    .col {
+      width: 50%;
+
+      h3 {
+        font-size: 28px;
+        font-family: $fuente-titulos;
+        margin-bottom: 25px;
+      }
+
+      ul {
+        list-style: none;
+
+        li {
+          margin: 12px 0;
+
+          strong {
+            display: inline-block;
+            color: $color-secundario;
+            width: 130px;
+          }
+
+          span {
+            background-color: $color-secundario;
+            padding: 3px;
+            font-weight: bold;
+            border-radius: 5px;
+          }
+        }
+      }
+
+      .contenedor-intereses {
+        @include flexbox(row, flex-start, center);
+        flex-wrap: wrap;
+
+        .interes {
+          width: 100px;
+          height: 100px;
+          background-color: $color-interes;
+          border-radius: 10px;
+          margin: 0 15px 15px 0;
+          @include flexbox(column, center, center);
+          transition: 0.3s;
+
+          &:hover {
+            background-color: $color-secundario;
+          }
+
+          i {
+            font-size: 40px;
+          }
+
+          span {
+            margin-top: -10px;
+          }
+        }
+      }
+    }
+  }
+
+  button {
+    @include button-style;
+
+    a {
+      color: $color-texto;
+      text-decoration: none;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      background-color: $color-secundario;
+      z-index: -1;
+      transition: 1s;
+    }
+
+    &:hover .overlay {
+      width: 100%;
+    }
+  }
+}
+
+// 🔹 Responsividad
+@media screen and (max-width: 700px) {
+  .sobremi .fila {
+    display: block;
+
+    .col {
+      width: fit-content;
+    }
+  }
 }

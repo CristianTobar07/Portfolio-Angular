@@ -1,9 +1,9 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { IonicModule } from '@ionic/angular';
 
 @Component({
   selector: 'app-sobremi',
-  imports: [CommonModule],
+  imports: [IonicModule],
   templateUrl: './sobremi.component.html',
   styleUrl: './sobremi.component.scss'
 })
